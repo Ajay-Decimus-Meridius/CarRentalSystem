@@ -1,4 +1,3 @@
-//import java.awt.Choice;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;   // or import java.util.*;
@@ -137,18 +136,22 @@ class CarRentalSystem{
                 System.out.println("========Rent a Car=========");
                 System.out.println("Enter your Name :");
                 String name=sc.nextLine();
-
+                System.out.println("===========================");
                 System.out.println("Availale Cars :");
-
+                System.out.println();
+             
+                System.out.println("===========================");
+                System.out.println("CAR-NO----BRAND----MODEL");
+                System.out.println("===========================");
                 for(Car car :cars){
                     if(car.isAvailable()){
-                        System.out.println(car.getcarno() +"--"+car.getcarbrand()+"--"+car.getcarmodel());
+                        System.out.println(car.getcarno() +"----"+car.getcarbrand()+"----"+car.getcarmodel());
                     }
                 }
-            
+            System.out.println("===================");
             System.out.println("Enter the Car Number you Want To Rent :");
             String carid=sc.nextLine();
-
+            System.out.println("==================");
             System.out.println("How Many Days you Want to Rent ? :");
             int rentaldays=sc.nextInt();
             sc.nextLine();
@@ -167,17 +170,20 @@ class CarRentalSystem{
             if(selectedCar != null){
                 double totalprice=selectedCar.getprice(rentaldays);
                 System.out.println("======RENTAL INFORMATION======");
-                System.out.println("Your Bill :");
-                System.out.println("Customer Id:"+newCustomer.getCustomerId());
-                System.out.println("Customer Name:"+newCustomer.getCustomerName());
-                System.out.println("Car  :"+selectedCar.getcarbrand() +"--"+selectedCar.getcarmodel());
-                System.out.println("Rental Days: "+ rentaldays);
-                System.out.println("Total Price: $ %.2f%n"+totalprice);
+                System.out.println("========Your Bill========");
+                System.out.println("Customer Id     :"+newCustomer.getCustomerId());
+                System.out.println("Customer Name   :"+newCustomer.getCustomerName());
+                System.out.println("Car             :"+selectedCar.getcarbrand() +"--"+selectedCar.getcarmodel());
+                System.out.println("Rental Days     :"+ rentaldays);
+                System.out.println("Total Price     :$ "+totalprice);
+                System.out.println("=================");
 
-                System.out.println("Confirmation !!!,Conform renatl (Yes/No) : ?");
+                System.out.println(" Confirmation !!! Conform renatl (Yes/No) : ?");
+                System.out.println("----------------------------");
                 String conform=sc.nextLine();
                 if(conform.equalsIgnoreCase("Yes")){
                     rentcar(selectedCar, newCustomer, rentaldays);
+                    System.out.println();
                     System.out.println("Car Rented Successfully !!");
                 }else{
                     System.out.println("Rent Cancelled");
@@ -211,7 +217,8 @@ class CarRentalSystem{
                 }
                 if(customer != null){
                     returnCar(carToReturn);
-                    System.out.println("Car Rented Successfully by "+customer.getCustomerName());
+                    System.out.println("Car Returned Successfully by "+customer.getCustomerName());
+                    System.out.println("Thank You For Using Our System !!");
                 }else{
                     System.out.println("Car was not rented or rental information is Missing !!");
                 }
@@ -240,7 +247,7 @@ public class main{
 
         rentalSystem.addCar(car1);
         rentalSystem.addCar(car2);
-         rentalSystem.addCar(car3);
-         rentalSystem.menu();
+        rentalSystem.addCar(car3);
+        rentalSystem.menu();
     }
 }
